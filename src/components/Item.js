@@ -1,14 +1,15 @@
-import React from "react"
-import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native"
-import { FontAwesome5 } from '@expo/vector-icons';
+import React from 'react'
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
+import { FontAwesome5 } from '@expo/vector-icons'
 
 const Item = () => {
-  const {itemWrapper, imageWrapper, imageStyle, priceBuyWrapper, priceTxt} = styles
+  const { itemWrapper, imageWrapper, imageStyle, priceBuyWrapper, priceTxt } =
+    styles
 
-  return(
+  return (
     <View style={itemWrapper}>
       <View style={imageWrapper}>
-        <Image style={imageStyle} source={require('../../icons/shirt.jpg')}/>
+        <Image style={imageStyle} source={require('../../icons/shirt.jpg')} />
       </View>
       <View style={priceBuyWrapper}>
         <Text style={priceTxt}>999,99 $</Text>
@@ -20,7 +21,7 @@ const Item = () => {
   )
 }
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   itemWrapper: {
     width: 120,
     height: 180,
@@ -44,7 +45,7 @@ const styles = StyleSheet.create ({
   },
   priceBuyWrapper: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingLeft: 7,

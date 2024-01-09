@@ -1,16 +1,21 @@
-import React from "react"
+import React from 'react'
 import { View, StyleSheet, Text, TextInput } from 'react-native'
 import { AntDesign } from '@expo/vector-icons'
 
 const HeaderContent = () => {
-  const {appName, searchBar, textInput} = styles
+  const { appName, searchBar, textInput } = styles
 
   return (
     <>
       <Text style={appName}>STORE IL</Text>
       <View style={searchBar}>
         <AntDesign name="search1" size={25} color="gray" />
-        <TextInput style={textInput} placeholderTextColor={'gray'} placeholder={'Search Item'} cursorColor={'gray'}/>
+        <TextInput
+          style={textInput}
+          placeholderTextColor={'gray'}
+          placeholder={'Search Item'}
+          cursorColor={'gray'}
+        />
       </View>
     </>
   )

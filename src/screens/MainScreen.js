@@ -1,10 +1,10 @@
-import React from "react"
+import React from 'react'
 import { View, StyleSheet, StatusBar, ScrollView } from 'react-native'
-import HeaderContent from "../components/HeaderContent"
-import Item from "../components/Item"
+import HeaderContent from '../components/HeaderContent'
+import Item from '../components/Item'
 
 const MainScreen = () => {
-  const {container, header, body} = styles
+  const { container, header, body } = styles
 
   return (
     <View style={container}>
@@ -47,6 +47,5 @@ const styles = StyleSheet.create({
     gap: 8
   }
 })
-
 
 export default MainScreen
