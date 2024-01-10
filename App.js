@@ -1,7 +1,11 @@
 import React from 'react'
-import MainScreen from './src/screens/MainScreen'
-import CartScreen from './src/screens/CartScreen'
+import { NavigationContainer } from '@react-navigation/native'
+import ScreensTabs from './src/components/ScreensTabs'
 
 export default function App() {
-  return <CartScreen />
+  return (
+    <NavigationContainer>
+      <ScreensTabs />
+    </NavigationContainer>
+  )
 }

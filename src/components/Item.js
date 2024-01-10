@@ -1,20 +1,30 @@
 import React from 'react'
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
-import { FontAwesome5 } from '@expo/vector-icons'
 
-const Item = () => {
-  const { itemWrapper, imageWrapper, imageStyle, priceBuyWrapper, priceTxt } =
-    styles
+const Item = (props) => {
+  const {
+    itemWrapper,
+    imageWrapper,
+    imageStyle,
+    itemNameStyle,
+    priceBuyWrapper,
+    priceTxt,
+    addButton,
+    addCartTxt
+  } = styles
+
+  const { navTo } = props
 
   return (
     <View style={itemWrapper}>
       <View style={imageWrapper}>
-        <Image style={imageStyle} source={require('../../icons/shirt.jpg')} />
+        <Image style={imageStyle} source={require('../../icons/shirt.png')} />
       </View>
       <View style={priceBuyWrapper}>
-        <Text style={priceTxt}>999,99 $</Text>
-        <TouchableOpacity>
-          <FontAwesome5 name="cart-plus" size={24} color="green" />
+        <Text style={itemNameStyle}>Black shirt</Text>
+        <Text style={priceTxt}>$999,99</Text>
+        <TouchableOpacity style={addButton} onPress={navTo}>
+          <Text style={addCartTxt}>Add to Cart</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -23,36 +33,41 @@ const Item = () => {
 
 const styles = StyleSheet.create({
   itemWrapper: {
-    width: 120,
-    height: 180,
-    backgroundColor: 'white',
-    borderWidth: 2,
-    borderRadius: 10,
-    borderColor: 'lightgray',
-    elevation: 7
+    width: 120
   },
   imageWrapper: {
-    flex: 5,
     justifyContent: 'center',
-    alignItems: 'center',
-    borderBottomColor: 'lightgray',
-    borderBottomWidth: 2
+    alignItems: 'center'
   },
   imageStyle: {
+    objectFit: 'contain',
     width: 110,
-    height: 140,
-    objectFit: 'contain'
+    height: 130
+  },
+  itemNameStyle: {
+    fontSize: 18
   },
   priceBuyWrapper: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingLeft: 7,
-    paddingRight: 7
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   priceTxt: {
-    fontSize: 18
+    fontSize: 18,
+    fontWeight: '800',
+    lineHeight: 19
+  },
+  addButton: {
+    borderColor: 'lightgreen',
+    borderWidth: 1,
+    borderRadius: 10,
+    backgroundColor: 'lightgreen',
+    paddingHorizontal: 6,
+    paddingVertical: 6,
+    elevation: 5
+  },
+  addCartTxt: {
+    fontWeight: '600'
   }
 })
 

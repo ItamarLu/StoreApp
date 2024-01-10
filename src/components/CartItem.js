@@ -17,7 +17,7 @@ const CartItem = () => {
   return (
     <View style={container}>
       <View style={imageWrapper}>
-        <Image style={imageStyle} source={require('../../icons/shirt.jpg')} />
+        <Image style={imageStyle} source={require('../../icons/shirt.png')} />
       </View>
       <View style={infoBuyWrapper}>
         <Text style={itemName}>Camisa Preta</Text>
