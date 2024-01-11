@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
 
-const Item = () => {
+const Item = (props) => {
   const {
     itemWrapper,
     imageWrapper,
@@ -13,10 +13,12 @@ const Item = () => {
     addCartTxt
   } = styles
 
+  const { itemPath } = props
+
   return (
     <View style={itemWrapper}>
       <View style={imageWrapper}>
-        <Image style={imageStyle} source={require('../../icons/shirt.png')} />
+        <Image style={imageStyle} source={itemPath} />
       </View>
       <View style={priceBuyWrapper}>
         <Text style={itemNameStyle}>Black shirt</Text>

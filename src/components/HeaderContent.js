@@ -1,5 +1,11 @@
 import React from 'react'
-import { View, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native'
+import {
+  View,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity
+} from 'react-native'
 import { AntDesign } from '@expo/vector-icons'
 
 const HeaderContent = (props) => {

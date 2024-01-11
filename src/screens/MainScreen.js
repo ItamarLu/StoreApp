@@ -22,12 +22,18 @@ const MainScreen = ({ navigation }) => {
           <Category />
         </View>
         <View style={body}>
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
+          <Item itemPath={require('../../icons/shirt.png')} />
+          <Item itemPath={require('../../icons/shirt.png')} />
+          <Item itemPath={require('../../icons/shirt.png')} />
+          <Item itemPath={require('../../icons/shirt.png')} />
+          <Item itemPath={require('../../icons/shirt.png')} />
+          <Item itemPath={require('../../icons/shirt.png')} />
+          <Item itemPath={require('../../icons/shirt.png')} />
+          <Item itemPath={require('../../icons/shirt.png')} />
+          <Item itemPath={require('../../icons/shirt.png')} />
+          <Item itemPath={require('../../icons/shirt.png')} />
+          <Item itemPath={require('../../icons/shirt.png')} />
+          <Item itemPath={require('../../icons/shirt.png')} />
         </View>
       </ScrollView>
     </View>
@@ -46,10 +52,7 @@ const styles = StyleSheet.create({
     gap: 10
   },
   categoryViewStyles: {
-    borderBottomColor: '#F0F0F0',
-    borderTopColor: '#F0F0F0',
-    borderBottomWidth: 2,
-    borderTopWidth: 2
+    paddingBottom: 10
   },
   body: {
     justifyContent: 'center',
