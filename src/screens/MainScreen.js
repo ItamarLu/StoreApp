@@ -2,9 +2,10 @@ import React from 'react'
 import { View, StyleSheet, StatusBar, ScrollView } from 'react-native'
 import HeaderContent from '../components/HeaderContent'
 import Item from '../components/Item'
+import Category from '../components/Category'
 
 const MainScreen = ({ navigation }) => {
-  const { container, header, body } = styles
+  const { container, header, categoryViewStyles, body } = styles
 
   const handleNav = () => {
     navigation.navigate('CartScreen')
@@ -15,15 +16,18 @@ const MainScreen = ({ navigation }) => {
       <StatusBar />
       <ScrollView>
         <View style={header}>
-          <HeaderContent />
+          <HeaderContent navTo={handleNav} />
+        </View>
+        <View style={categoryViewStyles}>
+          <Category />
         </View>
         <View style={body}>
-          <Item navTo={handleNav} />
-          <Item navTo={handleNav} />
-          <Item navTo={handleNav} />
-          <Item navTo={handleNav} />
-          <Item navTo={handleNav} />
-          <Item navTo={handleNav} />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
         </View>
       </ScrollView>
     </View>
@@ -36,12 +40,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
   header: {
-    height: 140,
+    height: 100,
     justifyContent: 'center',
     alignItems: 'center',
-    borderBottomColor: 'lightgray',
-    borderBottomWidth: 2,
     gap: 10
+  },
+  categoryViewStyles: {
+    borderBottomColor: '#F0F0F0',
+    borderTopColor: '#F0F0F0',
+    borderBottomWidth: 2,
+    borderTopWidth: 2
   },
   body: {
     justifyContent: 'center',

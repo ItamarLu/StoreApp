@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
 
-const Item = (props) => {
+const Item = () => {
   const {
     itemWrapper,
     imageWrapper,
@@ -13,8 +13,6 @@ const Item = (props) => {
     addCartTxt
   } = styles
 
-  const { navTo } = props
-
   return (
     <View style={itemWrapper}>
       <View style={imageWrapper}>
@@ -23,7 +21,7 @@ const Item = (props) => {
       <View style={priceBuyWrapper}>
         <Text style={itemNameStyle}>Black shirt</Text>
         <Text style={priceTxt}>$999,99</Text>
-        <TouchableOpacity style={addButton} onPress={navTo}>
+        <TouchableOpacity style={addButton}>
           <Text style={addCartTxt}>Add to Cart</Text>
         </TouchableOpacity>
       </View>

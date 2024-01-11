@@ -1,9 +1,12 @@
 import React from 'react'
-import { View, StyleSheet, Text, TextInput } from 'react-native'
+import { View, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native'
 import { AntDesign } from '@expo/vector-icons'
 
-const HeaderContent = () => {
-  const { container, searchBar, textInput } = styles
+const HeaderContent = (props) => {
+  const { container, searchBar, textInput, itemNumbers, itemNumbersTxt } =
+    styles
+
+  const { navTo } = props
 
   return (
     <View style={container}>
@@ -16,9 +19,14 @@ const HeaderContent = () => {
           cursorColor={'gray'}
         />
       </View>
-      <View>
-        <Text>23</Text>
-      </View>
+      <TouchableOpacity onPress={navTo}>
+        <View>
+          <AntDesign name="shoppingcart" size={50} color="black" />
+          <View style={itemNumbers}>
+            <Text style={itemNumbersTxt}>3</Text>
+          </View>
+        </View>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -45,6 +53,16 @@ const styles = StyleSheet.create({
   textInput: {
     fontSize: 20,
     width: 240
+  },
+  itemNumbers: {
+    position: 'absolute',
+    width: 30,
+    alignItems: 'center',
+    top: 10,
+    right: 6
+  },
+  itemNumbersTxt: {
+    fontWeight: '600'
   }
 })
 
