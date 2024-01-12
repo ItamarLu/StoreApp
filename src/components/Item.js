@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
 
 const Item = (props) => {
@@ -13,7 +13,11 @@ const Item = (props) => {
     addCartTxt
   } = styles
 
-  const { itemPath } = props
+  const { itemPath, itemName, itemPrice, addCart, id } = props
+
+  const handleAddToCart = () => {
+    addCart(id)
+  }
 
   return (
     <View style={itemWrapper}>
@@ -21,9 +25,9 @@ const Item = (props) => {
         <Image style={imageStyle} source={itemPath} />
       </View>
       <View style={priceBuyWrapper}>
-        <Text style={itemNameStyle}>Black shirt</Text>
-        <Text style={priceTxt}>$999,99</Text>
-        <TouchableOpacity style={addButton}>
+        <Text style={itemNameStyle}>{itemName}</Text>
+        <Text style={priceTxt}>${itemPrice}</Text>
+        <TouchableOpacity style={addButton} onPress={handleAddToCart}>
           <Text style={addCartTxt}>Add to Cart</Text>
         </TouchableOpacity>
       </View>

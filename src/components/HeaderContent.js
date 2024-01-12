@@ -12,7 +12,7 @@ const HeaderContent = (props) => {
   const { container, searchBar, textInput, itemNumbers, itemNumbersTxt } =
     styles
 
-  const { navTo } = props
+  const { navTo, cartItemsNum } = props
 
   return (
     <View style={container}>
@@ -29,7 +29,7 @@ const HeaderContent = (props) => {
         <View>
           <AntDesign name="shoppingcart" size={50} color="black" />
           <View style={itemNumbers}>
-            <Text style={itemNumbersTxt}>3</Text>
+            <Text style={itemNumbersTxt}>{cartItemsNum}</Text>
           </View>
         </View>
       </TouchableOpacity>

@@ -10,37 +10,37 @@ const Category = () => {
       <View style={container}>
         <TouchableOpacity>
           <View style={categoryWrapperStyles}>
-            <MaterialIcons name="house" size={75} color="white" />
+            <MaterialIcons name="house" size={60} color="white" />
           </View>
         </TouchableOpacity>
         <TouchableOpacity>
           <View style={categoryWrapperStyles}>
-            <MaterialIcons name="backpack" size={75} color="white" />
+            <MaterialIcons name="backpack" size={60} color="white" />
           </View>
         </TouchableOpacity>
         <TouchableOpacity>
           <View style={categoryWrapperStyles}>
-            <MaterialIcons name="auto-stories" size={75} color="white" />
+            <MaterialIcons name="auto-stories" size={60} color="white" />
           </View>
         </TouchableOpacity>
         <TouchableOpacity>
           <View style={categoryWrapperStyles}>
-            <MaterialIcons name="beach-access" size={75} color="white" />
+            <MaterialIcons name="beach-access" size={60} color="white" />
           </View>
         </TouchableOpacity>
         <TouchableOpacity>
           <View style={categoryWrapperStyles}>
-            <MaterialIcons name="agriculture" size={75} color="white" />
+            <MaterialIcons name="agriculture" size={60} color="white" />
           </View>
         </TouchableOpacity>
         <TouchableOpacity>
           <View style={categoryWrapperStyles}>
-            <MaterialIcons name="airplanemode-on" size={75} color="white" />
+            <MaterialIcons name="airplanemode-on" size={60} color="white" />
           </View>
         </TouchableOpacity>
         <TouchableOpacity>
           <View style={categoryWrapperStyles}>
-            <MaterialIcons name="attractions" size={75} color="white" />
+            <MaterialIcons name="attractions" size={60} color="white" />
           </View>
         </TouchableOpacity>
       </View>
