@@ -1,13 +1,26 @@
 import React from 'react'
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
+import { itemDetails } from '../utilities/itemDetails'
 
-const CartInfo = () => {
+const CartInfo = (props) => {
   const { wrapper, container, infoWrapper, payBtn } = styles
+
+  const { cartItems } = props
+
+  const calculateGrandTotal = () => {
+    let grandTotal = 0
+    for (const [id, quantity] of Object.entries(cartItems)) {
+      const item = itemDetails[id]
+      grandTotal += parseFloat(item.price.replace(',', '.')) * quantity
+    }
+    return grandTotal.toFixed(2).replace('.', ',')
+  }
+
   return (
     <View style={wrapper}>
       <View style={container}>
         <View style={infoWrapper}>
-          <Text>Total = 9999,99 $</Text>
+          <Text>Total = ${calculateGrandTotal()}</Text>
           <TouchableOpacity style={payBtn}>
             <Text>Continue to Payment</Text>
           </TouchableOpacity>
@@ -20,8 +33,8 @@ const CartInfo = () => {
 const styles = StyleSheet.create({
   wrapper: {
     marginTop: 2,
-    borderTopColor: 'gray',
-    borderTopWidth: 2
+    borderTopColor: 'lightgray',
+    borderTopWidth: 1
   },
   container: {
     width: 300,
@@ -30,7 +43,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 10,
     borderColor: 'lightgray',
-    elevation: 7,
+    elevation: 5,
     alignSelf: 'center',
     margin: 20
   },

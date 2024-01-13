@@ -1,39 +1,64 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
 import { FontAwesome5 } from '@expo/vector-icons'
 
-const CartItem = () => {
+const CartItem = (props) => {
   const {
     container,
     imageWrapper,
     imageStyle,
     infoBuyWrapper,
-    itemName,
+    itemNameStyles,
     quantityControlWrapper,
     itemQuantityTxt,
-    priceTxt
+    priceTxt,
+    cartBtn
   } = styles
+
+  const { itemPath, itemName, itemPrice, id, updateQuantityInCart, quantity } =
+    props
+  const [numberOfItems, setNumberOfItems] = useState(quantity)
+
+  const handlePressAdd = () => {
+    setNumberOfItems(numberOfItems + 1)
+    updateQuantityInCart(id, numberOfItems + 1)
+  }
+  const handlePressMinus = () => {
+    if (numberOfItems > 0) {
+      setNumberOfItems(numberOfItems - 1)
+      updateQuantityInCart(id, numberOfItems - 1)
+    }
+  }
+
+  const calculateTotalPrice = () => {
+    return (parseFloat(itemPrice.replace(',', '.')) * numberOfItems)
+      .toFixed(2)
+      .replace('.', ',')
+  }
 
   return (
     <View style={container}>
       <View style={imageWrapper}>
-        <Image style={imageStyle} source={require('../../icons/shirt.png')} />
+        <Image style={imageStyle} source={itemPath} />
       </View>
       <View style={infoBuyWrapper}>
-        <Text style={itemName}>Camisa Preta</Text>
+        <Text style={itemNameStyles}>{itemName}</Text>
         <View style={quantityControlWrapper}>
-          <TouchableOpacity>
-            <FontAwesome5 name="trash" size={24} color="black" />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <FontAwesome5 name="minus" size={24} color="black" />
-          </TouchableOpacity>
-          <Text style={itemQuantityTxt}>2</Text>
-          <TouchableOpacity>
-            <FontAwesome5 name="plus" size={24} color="black" />
+          {numberOfItems === 1 ? (
+            <TouchableOpacity style={cartBtn} onPress={handlePressMinus}>
+              <FontAwesome5 name="trash" size={24} color="white" />
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity style={cartBtn} onPress={handlePressMinus}>
+              <FontAwesome5 name="minus" size={24} color="white" />
+            </TouchableOpacity>
+          )}
+          <Text style={itemQuantityTxt}>{numberOfItems}</Text>
+          <TouchableOpacity style={cartBtn} onPress={handlePressAdd}>
+            <FontAwesome5 name="plus" size={24} color="white" />
           </TouchableOpacity>
         </View>
-        <Text style={priceTxt}>999,99 $</Text>
+        <Text style={priceTxt}>${calculateTotalPrice()}</Text>
       </View>
     </View>
   )
@@ -44,11 +69,11 @@ const styles = StyleSheet.create({
     width: 350,
     height: 160,
     backgroundColor: 'white',
-    borderWidth: 2,
     borderRadius: 10,
-    borderColor: 'lightgray',
+    elevation: 5,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    marginVertical: 5
   },
   imageWrapper: {
     justifyContent: 'center',
@@ -68,35 +93,36 @@ const styles = StyleSheet.create({
     maxWidth: 200,
     marginRight: 10
   },
-  itemName: {
+  itemNameStyles: {
     fontSize: 18
   },
   quantityControlWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: 150,
-    borderWidth: 2,
+    alignItems: 'center',
+    gap: 10,
     borderRadius: 10,
-    borderColor: 'lightgray',
     padding: 5
   },
   itemQuantityTxt: {
     fontSize: 18,
-    borderRightColor: 'gray',
-    borderRightWidth: 1,
-    borderLeftColor: 'gray',
-    borderLeftWidth: 1,
-    paddingLeft: 10,
-    paddingRight: 10
+    height: 30,
+    width: 30,
+    textAlign: 'center',
+    textAlignVertical: 'center'
   },
   priceTxt: {
+    fontWeight: '600',
     fontSize: 18,
-    borderWidth: 2,
+    borderRadius: 10
+  },
+  cartBtn: {
     borderRadius: 10,
-    borderColor: 'lightgray',
-    paddingTop: 5,
-    width: 100,
-    textAlign: 'center'
+    backgroundColor: 'black',
+    height: 35,
+    width: 35,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })
 

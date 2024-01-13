@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { View, StyleSheet, StatusBar, ScrollView } from 'react-native'
 import HeaderContent from '../components/HeaderContent'
 import Item from '../components/Item'
 import Category from '../components/Category'
 import { loadItems, saveItems } from '../utilities/Storage'
+import { useFocusEffect } from '@react-navigation/native'
 
 const MainScreen = ({ navigation }) => {
   const { container, header, categoryViewStyles, body } = styles
@@ -23,6 +24,19 @@ const MainScreen = ({ navigation }) => {
     notebook: 0
   })
 
+  const updateMainScreenData = useCallback(async () => {
+    const storedItems = await loadItems()
+    setItems(storedItems)
+  }, [])
+
+  useFocusEffect(
+    useCallback(() => {
+      (async () => {
+        await updateMainScreenData()
+      })()
+    }, [updateMainScreenData])
+  )
+
   const handleNav = () => {
     navigation.navigate('CartScreen')
   }
@@ -39,22 +53,12 @@ const MainScreen = ({ navigation }) => {
 
   useEffect(() => {
     saveItems(items)
-    console.log(items)
   }, [items])
-
-  useEffect(() => {
-    const loadItemsFromStorage = async () => {
-      const storedItems = await loadItems()
-      setItems(storedItems)
-    }
-
-    loadItemsFromStorage()
-  }, [])
 
   return (
     <View style={container}>
       <StatusBar />
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={header}>
           <HeaderContent navTo={handleNav} cartItemsNum={cartItemsNumber} />
         </View>
