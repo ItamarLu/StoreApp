@@ -1,5 +1,11 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  StatusBar
+} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
 const NextScreen = ({ route }) => {
@@ -21,6 +27,7 @@ const NextScreen = ({ route }) => {
 
   return (
     <View style={container}>
+      <StatusBar backgroundColor="white" />
       <Text style={thankYouText}>
         Thank you, {shippingInfo.name}, for your order!
       </Text>
@@ -40,7 +47,8 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: 'white'
   },
   thankYouText: {
     fontSize: 24,

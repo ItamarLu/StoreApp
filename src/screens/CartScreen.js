@@ -47,7 +47,7 @@ const CartScreen = ({ navigation }) => {
 
   return (
     <View style={container}>
-      <StatusBar />
+      <StatusBar backgroundColor="white" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={body}>
           {filteredItems.map(([id, quantity]) => (
@@ -71,8 +71,7 @@ const CartScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    flex: 1,
-    paddingTop: 5
+    flex: 1
   },
   body: {
     justifyContent: 'center',

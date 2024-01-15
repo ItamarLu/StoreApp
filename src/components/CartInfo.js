@@ -32,16 +32,13 @@ const CartInfo = (props) => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginTop: 2,
-    borderTopColor: 'lightgray',
-    borderTopWidth: 1
+    backgroundColor: '#f7f7f7'
   },
   container: {
     width: 350,
     justifyContent: 'center',
     alignItems: 'flex-end',
     borderRadius: 10,
-    backgroundColor: 'white',
     alignSelf: 'center',
     paddingRight: 5
   },

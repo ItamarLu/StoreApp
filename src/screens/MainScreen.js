@@ -5,6 +5,7 @@ import Item from '../components/Item'
 import Category from '../components/Category'
 import { loadItems, saveItems } from '../utilities/Storage'
 import { useFocusEffect } from '@react-navigation/native'
+import { itemDetails } from '../utilities/itemDetails'
 
 const MainScreen = ({ navigation }) => {
   const { container, header, categoryViewStyles, body } = styles
@@ -31,7 +32,7 @@ const MainScreen = ({ navigation }) => {
 
   useFocusEffect(
     useCallback(() => {
-      (async () => {
+      ;(async () => {
         await updateMainScreenData()
       })()
     }, [updateMainScreenData])
@@ -48,7 +49,7 @@ const MainScreen = ({ navigation }) => {
     }))
   }
 
-  const filteredItems = Object.entries(items).filter(
+  const itemsOnCart = Object.entries(items).filter(
     ([id, quantity]) => quantity > 0
   )
 
@@ -58,102 +59,25 @@ const MainScreen = ({ navigation }) => {
 
   return (
     <View style={container}>
-      <StatusBar />
+      <StatusBar backgroundColor="white" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={header}>
-          <HeaderContent
-            navTo={handleNav}
-            cartItemsNum={filteredItems.length}
-          />
+          <HeaderContent navTo={handleNav} cartItemsNum={itemsOnCart.length} />
         </View>
         <View style={categoryViewStyles}>
           <Category />
         </View>
         <View style={body}>
-          <Item
-            itemPath={require('../../icons/shirt.png')}
-            itemName={'Black Shirt'}
-            itemPrice={'34,99'}
-            addCart={handleAddCart}
-            id={'shirt'}
-          />
-          <Item
-            itemPath={require('../../icons/backpack.png')}
-            itemName={'Backpack'}
-            itemPrice={'49,99'}
-            addCart={handleAddCart}
-            id={'backpack'}
-          />
-          <Item
-            itemPath={require('../../icons/watch.png')}
-            itemName={'Golden Watch'}
-            itemPrice={'99,99'}
-            addCart={handleAddCart}
-            id={'watch'}
-          />
-          <Item
-            itemPath={require('../../icons/strawHat.png')}
-            itemName={'Straw Hat'}
-            itemPrice={'9,99'}
-            addCart={handleAddCart}
-            id={'hat'}
-          />
-          <Item
-            itemPath={require('../../icons/guitar.png')}
-            itemName={'Electric Guitar'}
-            itemPrice={'344,99'}
-            addCart={handleAddCart}
-            id={'guitar'}
-          />
-          <Item
-            itemPath={require('../../icons/shoes.png')}
-            itemName={'Black Shoes'}
-            itemPrice={'59,99'}
-            addCart={handleAddCart}
-            id={'shoes'}
-          />
-          <Item
-            itemPath={require('../../icons/chair.png')}
-            itemName={'Couch Chair'}
-            itemPrice={'22,99'}
-            addCart={handleAddCart}
-            id={'chair'}
-          />
-          <Item
-            itemPath={require('../../icons/table.png')}
-            itemName={'Tall Table'}
-            itemPrice={'137,99'}
-            addCart={handleAddCart}
-            id={'table'}
-          />
-          <Item
-            itemPath={require('../../icons/umbrella.png')}
-            itemName={'Red Umbrella'}
-            itemPrice={'17,99'}
-            addCart={handleAddCart}
-            id={'umbrella'}
-          />
-          <Item
-            itemPath={require('../../icons/ball.png')}
-            itemName={'Soccer Ball'}
-            itemPrice={'15,99'}
-            addCart={handleAddCart}
-            id={'ball'}
-          />
-          <Item
-            itemPath={require('../../icons/sunglass.png')}
-            itemName={'Sunglass'}
-            itemPrice={'42,99'}
-            addCart={handleAddCart}
-            id={'sunglass'}
-          />
-          <Item
-            itemPath={require('../../icons/notebook.png')}
-            itemName={'Notebook'}
-            itemPrice={'589,99'}
-            addCart={handleAddCart}
-            id={'notebook'}
-          />
+          {Object.entries(itemDetails).map(([id]) => (
+            <Item
+              key={id}
+              itemPath={itemDetails[id].imagePath}
+              itemName={itemDetails[id].name}
+              itemPrice={itemDetails[id].price}
+              addCart={() => handleAddCart(id)}
+              id={id}
+            />
+          ))}
         </View>
       </ScrollView>
     </View>

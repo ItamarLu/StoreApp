@@ -4,7 +4,8 @@ import {
   View,
   Text,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  StatusBar
 } from 'react-native'
 import InputInfo from '../components/InputInfo'
 
@@ -32,6 +33,7 @@ const PayScreen = ({ navigation }) => {
 
   return (
     <View style={container}>
+      <StatusBar backgroundColor="white" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={sectionContainer}>
           <Text style={TitleLabel}>Payment Information</Text>
@@ -113,7 +115,8 @@ const PayScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     paddingTop: 16,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    backgroundColor: 'white'
   },
   sectionContainer: {
     marginBottom: 20

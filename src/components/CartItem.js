@@ -69,20 +69,18 @@ const styles = StyleSheet.create({
     width: 350,
     height: 160,
     backgroundColor: 'white',
-    borderRadius: 10,
-    elevation: 5,
+    borderBottomWidth: 1,
+    borderBottomColor: 'lightgray',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginVertical: 5
+    bottom: -1
   },
   imageWrapper: {
-    justifyContent: 'center',
-    alignItems: 'start',
-    margin: 10
+    justifyContent: 'center'
   },
   imageStyle: {
     width: 110,
-    height: 150,
+    height: 140,
     objectFit: 'contain'
   },
   infoBuyWrapper: {
