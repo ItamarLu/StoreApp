@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     padding: 5
   },
   itemQuantityTxt: {
-    fontSize: 18,
+    fontSize: 20,
     height: 30,
     width: 30,
     textAlign: 'center',
@@ -113,8 +113,7 @@ const styles = StyleSheet.create({
   },
   priceTxt: {
     fontWeight: '600',
-    fontSize: 18,
-    borderRadius: 10
+    fontSize: 18
   },
   cartBtn: {
     borderRadius: 10,

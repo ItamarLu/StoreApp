@@ -3,9 +3,9 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import { itemDetails } from '../utilities/itemDetails'
 
 const CartInfo = (props) => {
-  const { wrapper, container, infoWrapper, payBtn } = styles
+  const { wrapper, container, infoWrapper, totalTxt, payBtn, payBtnTxt } = styles
 
-  const { cartItems } = props
+  const { cartItems, handleNav } = props
 
   const calculateGrandTotal = () => {
     let grandTotal = 0
@@ -20,9 +20,9 @@ const CartInfo = (props) => {
     <View style={wrapper}>
       <View style={container}>
         <View style={infoWrapper}>
-          <Text>Total = ${calculateGrandTotal()}</Text>
-          <TouchableOpacity style={payBtn}>
-            <Text>Continue to Payment</Text>
+          <Text style={totalTxt}>Total = ${calculateGrandTotal()}</Text>
+          <TouchableOpacity style={payBtn} onPress={handleNav}>
+            <Text style={payBtnTxt}>Continue to Payment</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -37,28 +37,36 @@ const styles = StyleSheet.create({
     borderTopWidth: 1
   },
   container: {
-    width: 300,
-    height: 100,
-    backgroundColor: 'white',
-    borderWidth: 2,
+    width: 350,
+    justifyContent: 'center',
+    alignItems: 'flex-end',
     borderRadius: 10,
-    borderColor: 'lightgray',
-    elevation: 5,
+    backgroundColor: 'white',
     alignSelf: 'center',
-    margin: 20
+    paddingRight: 5
   },
   infoWrapper: {
-    padding: 20,
+    paddingVertical: 20,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-end',
     gap: 10
   },
+  totalTxt: {
+    fontSize: 20,
+    fontWeight: '600'
+  },
   payBtn: {
-    borderWidth: 2,
+    borderWidth: 1,
     borderRadius: 10,
-    borderColor: 'gray',
-    paddingVertical: 8,
-    paddingHorizontal: 4
+    borderColor: 'lightgreen',
+    backgroundColor: 'lightgreen',
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    elevation: 3
+  },
+  payBtnTxt: {
+    fontSize: 16,
+    fontWeight: '600'
   }
 })
 

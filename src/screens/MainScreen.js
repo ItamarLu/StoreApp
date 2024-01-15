@@ -41,15 +41,16 @@ const MainScreen = ({ navigation }) => {
     navigation.navigate('CartScreen')
   }
 
-  const [cartItemsNumber, setCartItemsNumber] = useState(0)
-
   const handleAddCart = (id) => {
-    setCartItemsNumber(cartItemsNumber + 1)
     setItems((prevItems) => ({
       ...prevItems,
       [id]: (prevItems[id] || 0) + 1
     }))
   }
+
+  const filteredItems = Object.entries(items).filter(
+    ([id, quantity]) => quantity > 0
+  )
 
   useEffect(() => {
     saveItems(items)
@@ -60,7 +61,10 @@ const MainScreen = ({ navigation }) => {
       <StatusBar />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={header}>
-          <HeaderContent navTo={handleNav} cartItemsNum={cartItemsNumber} />
+          <HeaderContent
+            navTo={handleNav}
+            cartItemsNum={filteredItems.length}
+          />
         </View>
         <View style={categoryViewStyles}>
           <Category />

@@ -5,7 +5,7 @@ import CartInfo from '../components/CartInfo'
 import { itemDetails } from '../utilities/itemDetails'
 import { loadItems, saveItems } from '../utilities/Storage'
 
-const CartScreen = () => {
+const CartScreen = ({ navigation }) => {
   const { container, body } = styles
 
   const [items, setItems] = useState({})
@@ -41,6 +41,10 @@ const CartScreen = () => {
     saveItems({ ...items, [itemId]: newQuantity })
   }
 
+  const handleNav = () => {
+    navigation.navigate('PayScreen')
+  }
+
   return (
     <View style={container}>
       <StatusBar />
@@ -59,7 +63,7 @@ const CartScreen = () => {
           ))}
         </View>
       </ScrollView>
-      <CartInfo cartItems={items} />
+      <CartInfo cartItems={items} handleNav={handleNav} />
     </View>
   )
 }
